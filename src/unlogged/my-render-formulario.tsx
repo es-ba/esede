@@ -15,40 +15,23 @@ import { dispatchers } from "dmencu/dist/unlogged/unlogged/redux-formulario";
 import { FormStructureState } from "row-validator";
 
 setCalcularVariablesEspecificasOperativo((respuestasRaiz:RespuestasRaiz, forPk:ForPk)=>{
-    //ajustar variables
-    if(forPk.formulario == 'F:RE' as IdFormulario){
-        let respuestasHogares = respuestasRaiz['hogares'];
-        let cantHogares =respuestasHogares instanceof Array? respuestasHogares.length:0;
-        if (respuestasRaiz['contacto' as IdVariable]==2 && cantHogares == 0 ){
-            if (!respuestasHogares){
-                respuestasRaiz['hogares']=[];
-            }
-            respuestasRaiz['hogares' as IdUnidadAnalisis][0]={} as Respuestas;  
-        }
+    respuestasRaiz["resp_indi_sup" as IdVariable] = respuestasRaiz["msnombre" as IdVariable];
+    if(respuestasRaiz.personas && respuestasRaiz.personas instanceof Array){
+        respuestasRaiz["resp_comp_ed_sup" as IdVariable] = respuestasRaiz.personas[0]?.edad;
+        respuestasRaiz["resp_comp_sup" as IdVariable] = respuestasRaiz.personas[0]?.nombre;
+        respuestasRaiz["resp_indi_ed_sup" as IdVariable] = 
+            respuestasRaiz["cr_num_miembro" as IdVariable]?
+            respuestasRaiz.personas[respuestasRaiz.cr_num_miembro -1]?.edad
+            :null;
     }
-    if(forPk.formulario == 'F:S1_SUP' as IdFormulario){
-        let hogar = forPk.hogar as number - 1;
-        if(respuestasRaiz.hogares && respuestasRaiz.hogares[hogar]){
-            let respuestasHogarSup = respuestasRaiz.hogares_sup[hogar];
-            let respuestasHogar = respuestasRaiz.hogares[hogar];
-            respuestasHogarSup.resp_indi_sup = respuestasHogar.msnombre;
-            if(respuestasHogar.personas && respuestasHogar.personas instanceof Array){
-                respuestasHogarSup.resp_comp_ed_sup = respuestasHogar.personas[0]?.edad;
-                respuestasHogarSup.resp_comp_sup = respuestasHogar.personas[0]?.nombre;
-                respuestasHogarSup.resp_indi_ed_sup = 
-                    respuestasHogar.cr_num_miembro?
-                        respuestasHogar.personas[respuestasHogar.cr_num_miembro -1]?.edad
-                    :null;
-            }
-        }
-    }
-    if(forPk.formulario == 'F:I1' as IdFormulario){
+    if(forPk.formulario == 'F:SD_I1' as IdFormulario){
         let {respuestas} = respuestasForPk(forPk);
         respuestas['msi' as IdVariable] = respuestas['$p0' as IdVariable];
         respuestas['msnombrei' as IdVariable] = respuestas['nombre' as IdVariable];
         respuestas['msedadi'as IdVariable] = respuestas['edad' as IdVariable];
+        respuestas['ac3'as IdVariable] = forPk.vivienda;
     }
-    if(forPk.formulario == 'F:S1' as IdFormulario){
+    if(forPk.formulario == 'F:SD_RE' as IdFormulario){
         let {respuestas} = respuestasForPk(forPk);
         let respondente = (respuestas.personas instanceof Array && respuestas.personas.length)?respuestas.personas[0]:null;
         respuestas['nombrer' as IdVariable] = respondente?respondente['nombre' as IdVariable]:null;
