@@ -358,7 +358,7 @@ export function viviendas(context:TableContext):TableDefinition {
                 "operativo",
                 "vivienda"
             ],
-            "abr": "p"
+            "abr": "psup"
         }
     ]
 };

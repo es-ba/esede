@@ -104,10 +104,6 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
         be.appendToTableDefinition('inconsistencias',function(tableDef:TableDefinition, context?:TableContext){
             tableDef.sql={...tableDef.sql, isTable:true};
             tableDef.editable=tableDef.editable || context?.puede?.encuestas.justificar;
-            //agregar campo renglon, pk agregada de actividades
-            tableDef.fields.splice(5,0,
-                {name:'renglon'     , typeName:'bigint'   , editable: false},
-            );
             tableDef.fields.forEach(function(field){
                 if(field.name=='pk_integrada'){
                     field.visible=false;

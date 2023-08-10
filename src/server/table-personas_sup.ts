@@ -38,11 +38,6 @@ export function personas_sup(context:TableContext):TableDefinition {
             "nullable": true
         },
         {
-            "name": "lp_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
             "name": "spl0_sup",
             "typeName": "text",
             "nullable": true

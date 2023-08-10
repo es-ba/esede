@@ -183,7 +183,6 @@ create table "personas_sup" (
   "nombre_sup" text, 
   "sexo_sup" bigint, 
   "edad_sup" bigint, 
-  "lp_sup" bigint, 
   "spl0_sup" text
 , primary key ("operativo", "vivienda", "persona")
 );
