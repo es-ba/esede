@@ -18,11 +18,6 @@ export function personas(context:TableContext):TableDefinition {
             "nullable": false
         },
         {
-            "name": "hogar",
-            "typeName": "bigint",
-            "nullable": false
-        },
-        {
             "name": "persona",
             "typeName": "bigint",
             "nullable": false
@@ -38,22 +33,7 @@ export function personas(context:TableContext):TableDefinition {
             "nullable": true
         },
         {
-            "name": "p2b",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "p2b_6_esp",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
             "name": "edad",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "p4",
             "typeName": "bigint",
             "nullable": true
         },
@@ -64,316 +44,6 @@ export function personas(context:TableContext):TableDefinition {
         },
         {
             "name": "l0",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "p5",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "p5b",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "p6a",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "p6b",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "t1a",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "t3a",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "t9a",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "t29b",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "t44a",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "t46a",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "t51a",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "sn1b_1",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "sn1b_1_esp",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "sn1b_7",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "sn1b_7_esp",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "sn1b_2",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "sn1b_2_esp",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "sn1b_3",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "sn1b_3_esp",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "sn1b_4",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "sn1b_4_esp",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "sn1b_5",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "m1",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "m1_esp2",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "m1_esp3",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "m1_esp4",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "e2",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "e6a",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "e2t_h",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "e2t_min",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "e12a",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "e13",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc1",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_1",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_1_1_d",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_1_1_h",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_2",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_2_1_d",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_2_1_h",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_3",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_3_1_d",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_3_1_h",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_4",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_4_1_d",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_4_1_h",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_5",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_5_1_d",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_5_1_h",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_6",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_6_1_d",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_6_1_h",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_7",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_7_esp",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "dc2_7_1_d",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc2_7_1_h",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc3_1",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc3_2",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc3_3",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc3_4",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc3_5",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc3_6",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "dc3_6_esp",
             "typeName": "text",
             "nullable": true
         },
@@ -403,82 +73,217 @@ export function personas(context:TableContext):TableDefinition {
             "nullable": true
         },
         {
-            "name": "ut9_esp",
+            "name": "esede9_esp",
             "typeName": "text",
             "nullable": true
         },
         {
-            "name": "tel_ms",
+            "name": "sd1",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd2",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd3",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd4",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd5",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd6",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd7",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd8",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd9",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd10_1",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd10_2",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd10_3",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd10_4",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd10_5",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd10_6",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd10_7",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd10_8",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd11_1",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd11_2",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd11_3",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd11_4",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd11_5",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd12",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd13",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd14",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "sd15",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "e1",
             "typeName": "text",
             "nullable": true
         },
         {
-            "name": "correo_ms",
+            "name": "e2",
             "typeName": "text",
             "nullable": true
         },
         {
-            "name": "dia",
+            "name": "e3",
             "typeName": "bigint",
             "nullable": true
         },
         {
-            "name": "ut1",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "ut2",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "ut3",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "d1",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "d2",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "ut4",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "fin_1",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "fin_2",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "ut3_esp",
+            "name": "esede4_esp",
             "typeName": "text",
             "nullable": true
         },
         {
-            "name": "diario_sin_errores",
+            "name": "e4",
             "typeName": "bigint",
             "nullable": true
         },
         {
-            "name": "diario_comenzado",
+            "name": "esede8_esp",
+            "typeName": "text",
+            "nullable": true
+        },
+        {
+            "name": "e5",
             "typeName": "bigint",
             "nullable": true
         },
         {
-            "name": "modulo_1",
+            "name": "c1",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "c2",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "c3",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "c4",
+            "typeName": "text",
+            "nullable": true
+        },
+        {
+            "name": "ac1",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "ac1a",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "ac2",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "ac2a",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "ac3",
             "typeName": "bigint",
             "nullable": true
         }
@@ -490,28 +295,15 @@ export function personas(context:TableContext):TableDefinition {
     "primaryKey": [
         "operativo",
         "vivienda",
-        "hogar",
         "persona"
     ],
-    "detailTables": [
-        {
-            "table": "actividades",
-            "fields": [
-                "operativo",
-                "vivienda",
-                "hogar",
-                "persona"
-            ],
-            "abr": "a"
-        }
-    ],
+    "detailTables": [],
     "foreignKeys": [
         {
-            "references": "hogares",
+            "references": "viviendas",
             "fields": [
                 "operativo",
-                "vivienda",
-                "hogar"
+                "vivienda"
             ],
             "onDelete": 'cascade'
         }

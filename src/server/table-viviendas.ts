@@ -113,22 +113,77 @@ export function viviendas(context:TableContext):TableDefinition {
             "nullable": true
         },
         {
-            "name": "v1",
+            "name": "razon",
             "typeName": "bigint",
             "nullable": true
         },
         {
-            "name": "total_h",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "s1a1_obs_sup",
+            "name": "razon9_esp",
             "typeName": "text",
             "nullable": true
         },
         {
-            "name": "datos_personal_sup",
+            "name": "fecha_realiz",
+            "typeName": "date",
+            "nullable": true
+        },
+        {
+            "name": "d1",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "d2",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "d3",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "los_nombres",
+            "typeName": "text",
+            "nullable": true
+        },
+        {
+            "name": "total_m",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "respond",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "nombrer",
+            "typeName": "text",
+            "nullable": true
+        },
+        {
+            "name": "sorteo",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "tp",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "cr_num_miembro",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "msnombre",
+            "typeName": "text",
+            "nullable": true
+        },
+        {
+            "name": "s1a1_obs_sup",
             "typeName": "text",
             "nullable": true
         },
@@ -167,67 +222,102 @@ export function viviendas(context:TableContext):TableDefinition {
             "typeName": "bigint",
             "nullable": true
         },
+        { name: "consistido"    , label:'consistido'            , typeName: 'timestamp'},
         {
-            "name": "sp1_sup",
+            "name": "entrea_sup",
             "typeName": "bigint",
             "nullable": true
         },
         {
-            "name": "sp2_sup",
+            "name": "razon_sup",
             "typeName": "bigint",
             "nullable": true
         },
         {
-            "name": "razon2_1_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_2_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_3_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_4_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_5_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon2_6_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "razon3_sup",
+            "name": "esede9_sup_esp",
             "typeName": "text",
             "nullable": true
         },
         {
-            "name": "razon_9_1_sup",
+            "name": "resp_comp_sup",
+            "typeName": "text",
+            "nullable": true
+        },
+        {
+            "name": "resp_comp_ed_sup",
             "typeName": "bigint",
             "nullable": true
         },
         {
-            "name": "sp3_sup",
+            "name": "resp_indi_sup",
+            "typeName": "text",
+            "nullable": true
+        },
+        {
+            "name": "resp_indi_ed_sup",
             "typeName": "bigint",
             "nullable": true
         },
         {
-            "name": "total_h_sup",
+            "name": "entrevista",
             "typeName": "bigint",
             "nullable": true
         },
-        { name: "consistido"    , label:'consistido'            , typeName: 'timestamp'},
+        {
+            "name": "respon_sup",
+            "typeName": "text",
+            "nullable": true
+        },
+        {
+            "name": "respon_enc",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "fecha_realiz_sup",
+            "typeName": "date",
+            "nullable": true
+        },
+        {
+            "name": "nombres_componentes_sup",
+            "typeName": "text",
+            "nullable": true
+        },
+        {
+            "name": "total_m_sup",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "nombrer_sup",
+            "typeName": "text",
+            "nullable": true
+        },
+        {
+            "name": "sorteo_sup",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "tp_sup",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "ms_sup",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
+            "name": "msnombre_sup",
+            "typeName": "text",
+            "nullable": true
+        },
+        {
+            "name": "sup_ind",
+            "typeName": "bigint",
+            "nullable": true
+        }
     ],
     "sql": {
         "isReferable": true,
@@ -247,12 +337,12 @@ export function viviendas(context:TableContext):TableDefinition {
             "abr": "v"
         },
         {
-            "table": "hogares",
+            "table": "personas",
             "fields": [
                 "operativo",
                 "vivienda"
             ],
-            "abr": "h"
+            "abr": "p"
         },
         {
             "table": "visitas_sup",
@@ -263,12 +353,12 @@ export function viviendas(context:TableContext):TableDefinition {
             "abr": "vsup"
         },
         {
-            "table": "hogares_sup",
+            "table": "personas_sup",
             "fields": [
                 "operativo",
                 "vivienda"
             ],
-            "abr": "hsup"
+            "abr": "p"
         }
     ]
 };

@@ -18,11 +18,6 @@ export function personas_sup(context:TableContext):TableDefinition {
             "nullable": false
         },
         {
-            "name": "hogar",
-            "typeName": "bigint",
-            "nullable": false
-        },
-        {
             "name": "persona",
             "typeName": "bigint",
             "nullable": false
@@ -38,33 +33,18 @@ export function personas_sup(context:TableContext):TableDefinition {
             "nullable": true
         },
         {
-            "name": "p2b_sup",
-            "typeName": "bigint",
-            "nullable": true
-        },
-        {
-            "name": "p2b_6_sup_esp",
-            "typeName": "text",
-            "nullable": true
-        },
-        {
             "name": "edad_sup",
             "typeName": "bigint",
             "nullable": true
         },
         {
-            "name": "sp4_sup",
+            "name": "lp_sup",
             "typeName": "bigint",
             "nullable": true
         },
         {
             "name": "spl0_sup",
             "typeName": "text",
-            "nullable": true
-        },
-        {
-            "name": "spp5",
-            "typeName": "bigint",
             "nullable": true
         }
     ],
@@ -75,17 +55,15 @@ export function personas_sup(context:TableContext):TableDefinition {
     "primaryKey": [
         "operativo",
         "vivienda",
-        "hogar",
         "persona"
     ],
     "detailTables": [],
     "foreignKeys": [
         {
-            "references": "hogares_sup",
+            "references": "viviendas",
             "fields": [
                 "operativo",
-                "vivienda",
-                "hogar"
+                "vivienda"
             ],
             "onDelete": 'cascade'
         }

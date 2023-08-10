@@ -10,10 +10,8 @@ import {procedures} from "./procedures-esede"
 /* tablas ua */
 import { viviendas           } from './table-viviendas';
 import { visitas             } from './table-visitas';
-import { hogares             } from './table-hogares';
 import { personas            } from './table-personas';
 import { visitas_sup         } from './table-visitas_sup';
-import { hogares_sup         } from './table-hogares_sup';
 import { personas_sup        } from './table-personas_sup';
 
 const APP_DM_VERSION="#23-06-14";
@@ -83,10 +81,8 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
             ...this.getTableDefinition,
             viviendas,
             visitas,
-            hogares,
             personas,
             visitas_sup,
-            hogares_sup,
             personas_sup,
         }
         be.appendToTableDefinition('tem',function(tableDef:TableDefinition, _context?:TableContext){
