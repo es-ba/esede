@@ -102,6 +102,7 @@ var esRealizada = (respuestas:Respuestas)=>{
             }
         }else{
             //aca va lo de sin rea hogar, primera versión
+            var reah:number;
             var selec:number;
             selec=respuestas['cr_num_miembro']
             if(respuestas['personas'] && respuestas.personas[selec-1] ){
@@ -150,9 +151,9 @@ var esRealizadaSup=(respuestas:Respuestas)=>{
     var estructura = getEstructura();
     var esReaSup = false;
     var codReaSup:number|null= null;
-    if(/*!respuestas['confir_tel_sup' as IdVariable] && */!respuestas['modo_sup' as IdVariable]){
+    if(!respuestas['confir_tel_sup' as IdVariable] /*&& !respuestas['modo_sup' as IdVariable]*/){
         return {codReaSup, esReaSup}
-    }else if( respuestas['confir_tel_sup' as IdVariable]==2 || respuestas['confir_dom_sup' as IdVariable]==2||respuestas['sp1_sup' as IdVariable]==3||respuestas['sp1_sup' as IdVariable]==4){
+    }else if (respuestas['confir_tel_sup' as IdVariable]==2 ||respuestas['confir_dom_sup' as IdVariable]==2||respuestas['entrea_sup' as IdVariable]==2){
         codReaSup = 2;
         esReaSup = false;
     }else{
@@ -193,6 +194,22 @@ var esRealizadaSup=(respuestas:Respuestas)=>{
             }
         }else{
             //aca va lo de sin rea hogar
+            var resp_entrea_sup = respuestas['entrea_sup' as IdVariable ];
+            var resp_entrevista = respuestas['entrevista' as IdVariable ];
+            var resp_sup_ind = respuestas['sup_ind' as IdVariable ];
+            if(resp_entrevista==3||resp_sup_ind==2){
+                codReaSup=2;
+                esReaSup = false;
+            }else{
+                if(resp_entrea_sup==1 && resp_entrevista!=3 && resp_sup_ind==1){
+                    codReaSup=1;
+                    esReaSup = false;
+                }else {
+                    codReaSup=3;
+                    esReaSup = false;
+                }     
+            }
+            
         }
     }
     return {codReaSup,esReaSup}
