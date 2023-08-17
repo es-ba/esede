@@ -35,13 +35,13 @@ var esNoReaSup = (respuestas:Respuestas)=>{
 
 var esRealizada = (respuestas:Respuestas)=>{
     //TODO GENERALIZAR 
-    //determinar  fin_1, fin_2 se tienen en cuenta 
+    //determinar  fin_1, fin_2 se tienen en cuenta esto fue para ut
     var estructura = getEstructura();
     var esRea = false;
     var codRea:number|null= null;
-    if(!respuestas['identif' as IdVariable]){
+    if(!respuestas['contacto' as IdVariable]){
         return {codRea, esRea}
-    }else if(respuestas['identif' as IdVariable]==2 || respuestas['habita' as IdVariable]==2 ||respuestas['resid_hog' as IdVariable]==2||respuestas['contacto' as IdVariable]==2){
+    }else if(respuestas['contacto' as IdVariable]==2 || respuestas['d3' as IdVariable]==2){
         codRea = 2;
         esRea = false;
     }else{
@@ -59,8 +59,6 @@ var esRealizada = (respuestas:Respuestas)=>{
                         if(respuestasH['personas'] && respuestasH.personas[selec-1] ){
                             var respuestasP = respuestasH.personas[selec-1];
                             var resp_entrea_ind = respuestasP['entreaind' as IdVariable ];
-                            //var resp_resulcita_ind = respuestasP['resulcita' as IdVariable ];
-                            //var resp_reams_ind = respuestasP['reams' as IdVariable ];
                             var resp_fin1_ind = respuestasP['fin_1' as IdVariable ];
                             var resp_dominio=respuestas['vdominio' as IdVariable];
                             //console.log('dominio ', resp_dominio);
@@ -103,8 +101,48 @@ var esRealizada = (respuestas:Respuestas)=>{
                 esRea = false;
             }
         }else{
-            //aca va lo de sin rea hogar
-        }
+            //aca va lo de sin rea hogar, primera versión
+            var selec:number;
+            selec=respuestas['cr_num_miembro']
+            if(respuestas['personas'] && respuestas.personas[selec-1] ){
+                var respuestasP = respuestas.personas[selec-1];
+                var resp_entrea_ind = respuestasP['entreaind' as IdVariable ];
+                var resp_sd1 = respuestasP['sd1' as IdVariable ];
+                var resp_sd2 = respuestasP['sd2' as IdVariable ];
+                var resp_sd3 = respuestasP['sd3' as IdVariable ];
+                var resp_sd4 = respuestasP['sd4' as IdVariable ];
+                var resp_dominio=respuestas['vdominio' as IdVariable];
+                 // console.log('resp_entrea_ind ', resp_entrea_ind);  
+                if( resp_entrea_ind==1 ){ 
+                    if(resp_sd1==1 && resp_sd2==2 && resp_sd3==1 && resp_sd4==1){ 
+                            reah = 1    
+                    }else if (resp_sd1==2 || resp_sd2==1 || resp_sd3==2 || resp_sd4==2){
+                            reah=2;
+                    }else {
+                            reah=3 
+                    }        
+                }else if (resp_entrea_ind==2){
+                            reah=2;
+                }else{ // ver este caso 
+                           reah=3;
+                }
+            }else {
+                reah=3;
+            }            
+            if (reah==1){
+               codRea = 1;
+               esRea = true;
+            }else if(reah==2){
+               codRea = 2;
+               esRea = false;
+            }else if(reah==3){
+               codRea = 3;
+               esRea = false;
+            }else{ //aqui hay una sola vivienda-hogar no debería entrar por aqui pero sería el otros para atrapar casos no considerados
+               codRea = 4;
+               esRea = false;
+            }
+        }    
     }
     return {codRea,esRea}
 };
