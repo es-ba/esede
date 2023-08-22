@@ -112,6 +112,7 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
                     field.editable=context?.forDump || context?.puede?.encuestas.justificar;
                 }
             })
+            tableDef.fields=tableDef.fields.filter(f=>f.name !='hogar');
         })
         be.appendToTableDefinition('areas', function(tableDef){
             tableDef.selfRefresh = true;
