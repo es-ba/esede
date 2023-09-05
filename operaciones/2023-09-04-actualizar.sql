@@ -25,3 +25,9 @@ $BODY$;
 
 ALTER FUNCTION base.xcalcular_resultado_trg()
     OWNER TO esede231_owner;
+----
+CREATE TRIGGER xcalcular_resultado_trg
+    BEFORE INSERT OR UPDATE OF rea, norea
+    ON base.tem
+    FOR EACH ROW
+    EXECUTE PROCEDURE base.xcalcular_resultado_trg();
