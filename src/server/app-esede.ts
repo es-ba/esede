@@ -77,6 +77,8 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
     prepareGetTables(){
         var be=this;
         super.prepareGetTables();
+        delete(this.getTableDefinition['hogares']);
+        delete(this.getTableDefinition['hogares_sup']);
         this.getTableDefinition={
             ...this.getTableDefinition,
             viviendas,
