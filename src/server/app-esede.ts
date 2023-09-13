@@ -13,8 +13,9 @@ import { visitas             } from './table-visitas';
 import { personas            } from './table-personas';
 import { visitas_sup         } from './table-visitas_sup';
 import { personas_sup        } from './table-personas_sup';
+import { datos_rea           } from './table-datos_rea';
 
-const APP_DM_VERSION="#23-09-05b";
+const APP_DM_VERSION="#23-09-13";
 
 export type Constructor<T> = new(...args: any[]) => T;
 export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(Base:T){
@@ -71,6 +72,12 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
             "background_color": coloresEntornos[miSufijo]
         }
     }
+    override getMenuControles(context:Context){
+        var menuControles =super.getMenuControles(context);
+        menuControles.push( {menuType:'table', name:'datos rea', table: 'datos_rea'});
+        //console.log('longitud ',menuControles.length)
+        return menuControles
+     }
     getMenu(context:Context){
         return super.getMenu(context);
     }
@@ -86,6 +93,7 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
             personas,
             visitas_sup,
             personas_sup,
+            datos_rea,
         }
         be.appendToTableDefinition('tem',function(tableDef:TableDefinition, _context?:TableContext){
             tableDef.hiddenColumns=tableDef.hiddenColumns?.filter(element => element !='semana');
