@@ -120,7 +120,7 @@ var esRealizada = (respuestas:Respuestas)=>{
                  // console.log('resp_entrea_ind ', resp_entrea_ind);  
                 if( resp_entrea_ind==1 ){ 
                     if(resp_sd1==1 && resp_sd2==2 && resp_sd3==1 && resp_sd4==1 ){
-                      if (resp_ac1!=null && resp_ac1a!=null && resp_ac2!=null && resp_ac2a!=null){ 
+                      if (resp_ac1!=null && resp_ac1a!=null && resp_ac2!=null && resp_ac2a!=null && resp_ac1==resp_ac1a && resp_ac2==resp_ac2a){ 
                             reah=1 
                           }else {
                             reah=3
