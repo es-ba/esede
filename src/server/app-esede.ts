@@ -14,6 +14,7 @@ import { personas            } from './table-personas';
 import { visitas_sup         } from './table-visitas_sup';
 import { personas_sup        } from './table-personas_sup';
 import { datos_rea           } from './table-datos_rea';
+import { rea_anticuerpos     } from './table-rea_anticuerpos';
 
 const APP_DM_VERSION="#23-09-13";
 
@@ -75,6 +76,7 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
     override getMenuControles(context:Context){
         var menuControles =super.getMenuControles(context);
         menuControles.push( {menuType:'table', name:'datos rea', table: 'datos_rea'});
+        menuControles.push( {menuType:'table', name:'reas resultados anticuerpos', table: 'rea_anticuerpos'});
         //console.log('longitud ',menuControles.length)
         return menuControles
      }
@@ -94,6 +96,7 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
             visitas_sup,
             personas_sup,
             datos_rea,
+            rea_anticuerpos,
         }
         be.appendToTableDefinition('tem',function(tableDef:TableDefinition, _context?:TableContext){
             tableDef.hiddenColumns=tableDef.hiddenColumns?.filter(element => element !='semana');

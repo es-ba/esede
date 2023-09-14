@@ -31,6 +31,7 @@ export function datos_rea(context:TableContext):TableDefinition {
             "typeName": "bigint",
             "nullable": true
         },
+        /*
         {
             "name": "soporte",
             "typeName": "bigint",
@@ -106,11 +107,13 @@ export function datos_rea(context:TableContext):TableDefinition {
             "typeName": "bigint",
             "nullable": true
         },
+        */
         {
             "name": "contacto",
             "typeName": "bigint",
             "nullable": true
         },
+        /*
         {
             "name": "razon",
             "typeName": "bigint",
@@ -121,6 +124,7 @@ export function datos_rea(context:TableContext):TableDefinition {
             "typeName": "text",
             "nullable": true
         },
+        */
         {
             "name": "fecha_realiz",
             "typeName": "date",
@@ -181,6 +185,7 @@ export function datos_rea(context:TableContext):TableDefinition {
             "typeName": "text",
             "nullable": true
         },
+        /*
         {
             "name": "s1a1_obs_sup",
             "typeName": "text",
@@ -257,21 +262,25 @@ export function datos_rea(context:TableContext):TableDefinition {
             "typeName": "bigint",
             "nullable": true
         },
+        
         {
-            "name": "entrevista",
+            "name": "entrevista",  //es de supervisión
             "typeName": "bigint",
             "nullable": true
         },
+
         {
             "name": "respon_sup",
             "typeName": "text",
             "nullable": true
         },
+      
         {
             "name": "respon_enc",
             "typeName": "bigint",
             "nullable": true
         },
+
         {
             "name": "fecha_realiz_sup",
             "typeName": "date",
@@ -317,6 +326,7 @@ export function datos_rea(context:TableContext):TableDefinition {
             "typeName": "bigint",
             "nullable": true
         },
+        */
         {
             "name": "persona",
             "typeName": "bigint",
@@ -368,7 +378,7 @@ export function datos_rea(context:TableContext):TableDefinition {
             "nullable": true
         },
         {
-            "name": "noreaind",
+            "name": "noreaind",        //tiene que ser respondente la persona  se podría ocultar
             "typeName": "bigint",
             "nullable": true
         },
