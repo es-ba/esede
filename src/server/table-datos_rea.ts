@@ -544,17 +544,17 @@ export function datos_rea(context:TableContext):TableDefinition {
         },
         {
             "name": "c1",
-            "typeName": "bigint",
+            "typeName": "text",
             "nullable": true
         },
         {
             "name": "c2",
-            "typeName": "bigint",
+            "typeName": "text",
             "nullable": true
         },
         {
             "name": "c3",
-            "typeName": "bigint",
+            "typeName": "text",
             "nullable": true
         },
         {
@@ -599,7 +599,7 @@ export function datos_rea(context:TableContext):TableDefinition {
     sql: {
         from: `(
             select v.*,
-            persona, nombre, sexo, edad, lp, l0, msi, msnombrei, msedadi, entreaind, noreaind, esede9_esp, sd1, sd2, sd3, sd4, sd5, sd6, sd7, sd8, sd9, sd10_1, sd10_2, sd10_3, sd10_4, sd10_5, sd10_6, sd10_7, sd10_8, sd11_1, sd11_2, sd11_3, sd11_4, sd11_5, sd12, sd13, sd14, sd15, e1, e2, e3, esede4_esp, e4, esede8_esp, e5, c1, c2, c3, c4, ac1, ac1a, ac2, ac2a, ac3
+            persona, nombre, sexo, edad, lp, l0, msi, msnombrei, msedadi, entreaind, noreaind, esede9_esp, sd1, sd2, sd3, sd4, sd5, sd6, sd7, sd8, sd9, sd10_1, sd10_2, sd10_3, sd10_4, sd10_5, sd10_6, sd10_7, sd10_8, sd11_1, sd11_2, sd11_3, sd11_4, sd11_5, sd12, sd13, sd14, sd15, e1, e2, e3, esede4_esp, e4, esede8_esp, e5, c1::text, c2::text, c3::text, c4, ac1, ac1a, ac2, ac2a, ac3
             ,t.rea,t.resumen_estado,t.resultado,tt.verificado, tt.estado
                 from viviendas v
                 inner join personas p on v.operativo=p.operativo and v.vivienda=p.vivienda 
