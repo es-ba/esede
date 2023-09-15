@@ -21,17 +21,19 @@ export function datos_rea(context:TableContext):TableDefinition {
             "typeName": "bigint",
             "nullable": true
         },
+        {name:'nrocomuna'            , typeName:'integer' , editable: false  },
         {
             "name": "obs_re",
             "typeName": "text",
             "nullable": true
         },
+        /*
         {
             "name": "total_vis",
             "typeName": "bigint",
             "nullable": true
         },
-        /*
+
         {
             "name": "soporte",
             "typeName": "bigint",
@@ -610,13 +612,13 @@ export function datos_rea(context:TableContext):TableDefinition {
         from: `(
             select v.*,
             persona, nombre, sexo, edad, lp, l0, msi, msnombrei, msedadi, entreaind, noreaind, esede9_esp, sd1, sd2, sd3, sd4, sd5, sd6, sd7, sd8, sd9, sd10_1, sd10_2, sd10_3, sd10_4, sd10_5, sd10_6, sd10_7, sd10_8, sd11_1, sd11_2, sd11_3, sd11_4, sd11_5, sd12, sd13, sd14, sd15, e1, e2, e3, esede4_esp, e4, esede8_esp, e5, c1::text, c2::text, c3::text, c4, ac1, ac1a, ac2, ac2a, ac3
-            ,t.rea,t.resumen_estado,t.resultado,tt.verificado, tt.estado
+            ,t.rea,t.resumen_estado,t.resultado,t.nrocomuna,tt.verificado, tt.estado
                 from viviendas v
                 inner join personas p on v.operativo=p.operativo and v.vivienda=p.vivienda 
                 inner join tem t on t.operativo=v.operativo and t.enc=v.vivienda
                 inner join tareas_tem tt on t.operativo=tt.operativo and t.enc=tt.enc and tt.estado='V' and tt.tarea=t.tarea_actual
                 where t.rea=1 and v.cr_num_miembro=p.persona
-                order by v.vivienda, p.persona
+                order by v.vdominio, v.vivienda, p.persona
             )`,
         isTable: false
     },
