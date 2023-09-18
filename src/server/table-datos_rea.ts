@@ -616,7 +616,7 @@ export function datos_rea(context:TableContext):TableDefinition {
                 from viviendas v
                 inner join personas p on v.operativo=p.operativo and v.vivienda=p.vivienda 
                 inner join tem t on t.operativo=v.operativo and t.enc=v.vivienda
-                inner join tareas_tem tt on t.operativo=tt.operativo and t.enc=tt.enc and tt.estado='V' and tt.tarea=t.tarea_actual
+                inner join tareas_tem tt on t.operativo=tt.operativo and t.enc=tt.enc and tt.tarea=t.tarea_actual
                 where t.rea=1 and v.cr_num_miembro=p.persona
                 order by v.vdominio, v.vivienda, p.persona
             )`,

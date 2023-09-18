@@ -76,7 +76,7 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
     override getMenuControles(context:Context){
         var menuControles =super.getMenuControles(context);
         menuControles.push( {menuType:'table', name:'datos rea', table: 'datos_rea'});
-        menuControles.push( {menuType:'table', name:'reas resultados anticuerpos', table: 'rea_anticuerpos'});
+       // menuControles.push( {menuType:'table', name:'reas resultados anticuerpos', table: 'rea_anticuerpos'});
         //console.log('longitud ',menuControles.length)
         return menuControles
      }
