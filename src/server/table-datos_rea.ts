@@ -22,6 +22,16 @@ export function datos_rea(context:TableContext):TableDefinition {
             "nullable": true
         },
         {name:'nrocomuna'            , typeName:'integer' , editable: false  },
+        {name:'codcalle'             , typeName:'integer' , editable: false  },
+        {name:'nomcalle'             , typeName:'text'    , editable: false  },
+        {name:'nrocatastral'         , typeName:'integer' , editable: false  },
+        {name:'piso'                 , typeName:'text'    , editable: false  },
+        {name:'departamento'         , typeName:'text'    , editable: false  },
+        {name:'habitacion'           , typeName:'text'    , editable: false  },
+        {name:'sector'               , typeName:'text'    , editable: false  },
+        {name:'edificio'             , typeName:'text'    , editable: false  },
+        {name:'entrada'              , typeName:'text'    , editable: false  },
+        {name:'barrio'               , typeName:'text'    , editable: false  },
         {
             "name": "obs_re",
             "typeName": "text",
@@ -501,12 +511,12 @@ export function datos_rea(context:TableContext):TableDefinition {
         },
         {
             "name": "sd12",
-            "typeName": "bigint",
+            "typeName": "decimal",
             "nullable": true
         },
         {
             "name": "sd13",
-            "typeName": "bigint",
+            "typeName": "decimal",
             "nullable": true
         },
         {
@@ -599,6 +609,8 @@ export function datos_rea(context:TableContext):TableDefinition {
             "typeName": "bigint",
             "nullable": true
         },
+        {name:'rea'                  , typeName:'integer' , editable: false  },
+        {name:'norea'                , typeName:'integer' , editable: false  },
         {name:'resumen_estado'       , typeName:'text'     },
         {name:'resultado'            , typeName:'text'     },
         {name:'verificado'           , typeName:'text'     }, 
@@ -612,12 +624,13 @@ export function datos_rea(context:TableContext):TableDefinition {
         from: `(
             select v.*,
             persona, nombre, sexo, edad, lp, l0, msi, msnombrei, msedadi, entreaind, noreaind, esede9_esp, sd1, sd2, sd3, sd4, sd5, sd6, sd7, sd8, sd9, sd10_1, sd10_2, sd10_3, sd10_4, sd10_5, sd10_6, sd10_7, sd10_8, sd11_1, sd11_2, sd11_3, sd11_4, sd11_5, sd12, sd13, sd14, sd15, e1, e2, e3, esede4_esp, e4, esede8_esp, e5, c1::text, c2::text, c3::text, c4, ac1, ac1a, ac2, ac2a, ac3
-            ,t.rea,t.resumen_estado,t.resultado,t.nrocomuna,tt.verificado, tt.estado
+            ,t.rea,t.norea,t.resumen_estado,t.resultado,t.nrocomuna,tt.verificado, tt.estado
+            ,t.codcalle,t.nomcalle, t.nrocatastral,t.piso,t.departamento,t.habitacion,t.sector,t.edificio,t.entrada,t.barrio
                 from viviendas v
-                inner join personas p on v.operativo=p.operativo and v.vivienda=p.vivienda 
+                left join personas p on v.operativo=p.operativo and v.vivienda=p.vivienda and v.cr_num_miembro=p.persona
                 inner join tem t on t.operativo=v.operativo and t.enc=v.vivienda
-                inner join tareas_tem tt on t.operativo=tt.operativo and t.enc=tt.enc and tt.tarea=t.tarea_actual
-                where t.rea=1 and v.cr_num_miembro=p.persona
+                inner join tareas_tem tt on t.operativo=tt.operativo and t.enc=tt.enc and tt.tarea=t.tarea_actual and tt.estado in ('D','P','V')
+                where t.rea in (1,2)
                 order by v.vdominio, v.vivienda, p.persona
             )`,
         isTable: false
