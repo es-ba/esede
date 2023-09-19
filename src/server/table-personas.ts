@@ -189,12 +189,12 @@ export function personas(context:TableContext):TableDefinition {
         },
         {
             "name": "sd12",
-            "typeName": "bigint",
+            "typeName": "decimal",
             "nullable": true
         },
         {
             "name": "sd13",
-            "typeName": "bigint",
+            "typeName": "decimal",
             "nullable": true
         },
         {
