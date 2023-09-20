@@ -32,12 +32,12 @@ export function datos_control(context:TableContext):TableDefinition {
         {name:'edificio'             , typeName:'text'    , editable: false  },
         {name:'entrada'              , typeName:'text'    , editable: false  },
         {name:'barrio'               , typeName:'text'    , editable: false  },
-        /*
         {
             "name": "obs_re",
             "typeName": "text",
             "nullable": true
         },
+        /*
         {
             "name": "total_vis",
             "typeName": "bigint",
