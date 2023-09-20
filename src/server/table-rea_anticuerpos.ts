@@ -1,5 +1,5 @@
 "use strict";
-/* control rea anticuerpos se puede tal vez generalizar basandonos en la datos_rea, consultar si quieren mirar también las reas no verificadas */
+/* control rea anticuerpos se puede tal vez generalizar basandonos en la datos_control, por ahora reas=1 y estados como datos control */
 import {TableDefinition, TableContext} from "./types-esede";
 export function rea_anticuerpos(context:TableContext):TableDefinition {
     return {
@@ -85,7 +85,7 @@ export function rea_anticuerpos(context:TableContext):TableDefinition {
                 from viviendas v
                 inner join personas p on v.operativo=p.operativo and v.vivienda=p.vivienda 
                 inner join tem t on t.operativo=v.operativo and t.enc=v.vivienda
-                inner join tareas_tem tt on t.operativo=tt.operativo and t.enc=tt.enc and tt.estado='V' and tt.tarea=t.tarea_actual
+                inner join tareas_tem tt on t.operativo=tt.operativo and t.enc=tt.enc and tt.tarea=t.tarea_actual and tt.estado in ('D','P','V')
                 where t.rea=1 and v.cr_num_miembro=p.persona
                 order by v.vdominio,v.vivienda, p.persona
             )`,

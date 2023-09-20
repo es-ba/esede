@@ -13,7 +13,7 @@ import { visitas             } from './table-visitas';
 import { personas            } from './table-personas';
 import { visitas_sup         } from './table-visitas_sup';
 import { personas_sup        } from './table-personas_sup';
-import { datos_rea           } from './table-datos_rea';
+import { datos_control       } from './table-datos_control';
 import { rea_anticuerpos     } from './table-rea_anticuerpos';
 
 const APP_DM_VERSION="#23-09-13";
@@ -75,7 +75,7 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
     }
     override getMenuControles(context:Context){
         var menuControles =super.getMenuControles(context);
-        menuControles.push( {menuType:'table', name:'Datos', table: 'datos_rea'});
+        menuControles.push( {menuType:'table', name:'Datos', table: 'datos_control'});
        // menuControles.push( {menuType:'table', name:'reas resultados anticuerpos', table: 'rea_anticuerpos'});
         //console.log('longitud ',menuControles.length)
         return menuControles
@@ -95,7 +95,7 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
             personas,
             visitas_sup,
             personas_sup,
-            datos_rea,
+            datos_control,
             rea_anticuerpos,
         }
         be.appendToTableDefinition('tem',function(tableDef:TableDefinition, _context?:TableContext){
