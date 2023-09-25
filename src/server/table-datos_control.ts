@@ -629,7 +629,8 @@ export function datos_control(context:TableContext):TableDefinition {
                 from viviendas v
                 left join personas p on v.operativo=p.operativo and v.vivienda=p.vivienda and v.cr_num_miembro=p.persona
                 inner join tem t on t.operativo=v.operativo and t.enc=v.vivienda
-                inner join tareas_tem tt on t.operativo=tt.operativo and t.enc=tt.enc and tt.tarea=t.tarea_actual and tt.estado in ('D','P','V')
+                inner join tareas_tem tt on t.operativo=tt.operativo and t.enc=tt.enc and tt.tarea=t.tarea_actual 
+                and ( tt.tarea='proc' or (tt.tarea is distinct from 'proc' and tt.estado in ('D','P','V') ) )
                 where t.rea in (1,2)
                 order by v.vdominio, v.vivienda, p.persona
             )`,
