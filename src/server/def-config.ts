@@ -1,21 +1,17 @@
 export const defConfig=`
 server:
   port: 3090
-  base-url: /esede231
+  base-url: /esede241
   session-store: memory
 db:
-  user: esede231_admin
+  user: esede241_admin
   motor: postgresql
   host: localhost
-  database: esede231_db
-  schema: base
-  search_path: 
-  - base
-  - comun
+  database: esede241_db
 install:
   dump:
     db:
-      owner: esede231_owner
+      owner: esede241_owner
       apply-generic-user-replaces: true
     admin-can-create-tables: true
     enances: inline
@@ -43,6 +39,8 @@ install:
       - ../node_modules/dmencu/install/control_disform_cerrado_trg.sql
       - ../node_modules/dmencu/install/control_cargado_tareas_tem_trg.sql
       - ../node_modules/dmencu/install/accion_cumple_condicion.sql
+      - ../node_modules/dmencu/install/tarea_cumple_condicion.sql
+      - ../node_modules/dmencu/install/agregar_historial_tem_trg.sql
       - ../node_modules/dmencu/install/actualizar_estado_tem_trg.sql
       - ../node_modules/dmencu/install/carga_inicial_tareas_tem.sql
       - ../node_modules/dmencu/install/validar_tareas_tem_trg.sql
@@ -52,7 +50,7 @@ install:
       - desintegrarpk.sql
       - comun_otras_fun.sql
       - ../node_modules/dmencu/install/actualizar_inconvar.sql
-      - configuracion_sorteo_esede231.sql  
+      - configuracion_sorteo_esede241.sql  
 login:
   infoFieldList: [usuario, rol, idper]
   table: usuarios

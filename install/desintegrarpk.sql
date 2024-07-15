@@ -1,5 +1,5 @@
 set search_path= base;
---set role esede231_owner;
+--set role esede241_owner;
 
 ALTER TABLE inconsistencias 
   drop COLUMN if exists renglon,

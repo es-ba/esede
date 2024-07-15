@@ -2,7 +2,7 @@ set search_path=base;
 
 alter table operativos add con_rea_hogar boolean default true;
 
-update operativos set con_rea_hogar = false where operativo = 'esede231';
+update operativos set con_rea_hogar = false where operativo = 'esede241';
 
 set search_path = base;
 
@@ -102,4 +102,4 @@ UPDATE operativos
             "sorteado_mostrar": [{"source":"nombre_sup", "target":"msnombre_sup"}]
         }
     }'
-where operativo = 'esede231';
+where operativo = 'esede241';

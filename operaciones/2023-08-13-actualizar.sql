@@ -1,6 +1,6 @@
 set search_path=base;
-set role esede231_owner; --adaptar al usuario que corresponda según el entorno
---set role esede231_muleto_owner;
+set role esede241_owner; --adaptar al usuario que corresponda según el entorno
+--set role esede241_muleto_owner;
 
 CREATE OR REPLACE FUNCTION determinar_tarea_proxima_trg()
     RETURNS trigger

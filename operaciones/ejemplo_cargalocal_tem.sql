@@ -1,26 +1,26 @@
 --EJEMPLO LOCAL PARA CARGA INICIAL DE REGISTROS EN TEM, TAREAS_AREAS Y TAREAS_TEM
 set search_path=base;
---set role esede231_owner;
+--set role esede241_owner;
 /* EN DISCON 
 INSERT INTO BASE.areas (operativo, area)
-  select 'esede231', area
+  select 'esede241', area
     from BASE.areas
-    where operativo='esede231';
+    where operativo='esede241';
 insert into base.tem (operativo, area,enc)
-  select 'esede231', area,enc
+  select 'esede241', area,enc
     from BASE.tem
     where operativo='PREJU_2022'
     order by area,enc; 
 insert into tareas (tarea, nombre, rol_asignante, main_form, registra_estado_en_tem, operativo)
-  select tarea, nombre, rol_asignante, main_form,registra_estado_en_tem, 'esede231'
+  select tarea, nombre, rol_asignante, main_form,registra_estado_en_tem, 'esede241'
     from base.tareas
     where operativo='PREJU_2022';
 insert into tareas_areas
-  select 'esede231', tarea, area
+  select 'esede241', tarea, area
     from tareas_areas
     where operativo='PREJU_2022';
 insert into tareas_tem(tarea, operativo,enc)
-    select tarea, 'esede231',enc
+    select tarea, 'esede241',enc
     from tareas_tem
     where operativo='PREJU_2022';
     
@@ -31,7 +31,7 @@ insert into tareas_tem(tarea, operativo,enc)
 
 --CONSULTA YA GENERADA POR RAQUEL DESDE SCRIPT en carpeta Operaciones de DMENCU
 set search_path=base;
-set role esede231_owner;
+set role esede241_owner;
 
 -- Primer seteo con data de asignacion desde areas
 -- TODO reveer si agregamos campos asociados a las tareas supe y recu a areas
@@ -44,7 +44,7 @@ insert into tareas_areas(operativo, tarea, area, asignado, asignante, obs_asigna
             from areas a ,(select t.operativo, t.tarea 
                 from tareas t join parametros p on unico_registro and t.operativo=p.operativo
             )t
-            where a.operativo= t.operativo and a.operativo='esede231'
+            where a.operativo= t.operativo and a.operativo='esede241'
         ) n
         --where not exists (select 1 from tareas_areas t where t.operativo= n.operativo and t.tarea=n.tarea and t.area=n.area)
         order by 1,2,3;

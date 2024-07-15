@@ -1,6 +1,6 @@
 -- reemplazar adecuadamente owner y, admin segun entorno
 
-set role esede231_owner;
+set role esede241_owner;
 set search_path = "base";
 
 drop table if exists personas ;
@@ -77,8 +77,8 @@ create table "viviendas" (
   "sup_ind" bigint
 , primary key ("operativo", "vivienda")
 );
-grant select, insert, update, delete, references on "viviendas" to esede231_admin;
-grant all on "viviendas" to esede231_owner;
+grant select, insert, update, delete, references on "viviendas" to esede241_admin;
+grant all on "viviendas" to esede241_owner;
 
 
 create table "visitas" (
@@ -93,8 +93,8 @@ create table "visitas" (
   "anotacion" text
 , primary key ("operativo", "vivienda", "visita")
 );
-grant select, insert, update, delete, references on "visitas" to esede231_admin;
-grant all on "visitas" to esede231_owner;
+grant select, insert, update, delete, references on "visitas" to esede241_admin;
+grant all on "visitas" to esede241_owner;
 
 
 create table "personas" (
@@ -156,8 +156,8 @@ create table "personas" (
   "ac3" bigint
 , primary key ("operativo", "vivienda", "persona")
 );
-grant select, insert, update, delete, references on "personas" to esede231_admin;
-grant all on "personas" to esede231_owner;
+grant select, insert, update, delete, references on "personas" to esede241_admin;
+grant all on "personas" to esede241_owner;
 
 
 create table "visitas_sup" (
@@ -172,8 +172,8 @@ create table "visitas_sup" (
   "anotacion_sup" text
 , primary key ("operativo", "vivienda", "visita")
 );
-grant select, insert, update, delete, references on "visitas_sup" to esede231_admin;
-grant all on "visitas_sup" to esede231_owner;
+grant select, insert, update, delete, references on "visitas_sup" to esede241_admin;
+grant all on "visitas_sup" to esede241_owner;
 
 
 create table "personas_sup" (
@@ -186,8 +186,8 @@ create table "personas_sup" (
   "spl0_sup" text
 , primary key ("operativo", "vivienda", "persona")
 );
-grant select, insert, update, delete, references on "personas_sup" to esede231_admin;
-grant all on "personas_sup" to esede231_owner;
+grant select, insert, update, delete, references on "personas_sup" to esede241_admin;
+grant all on "personas_sup" to esede241_owner;
 
 
 -- conss

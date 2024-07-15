@@ -1,13 +1,13 @@
 set search_path=base;
 
 -- reemplazar adecuadamente owner y, admin segun entorno
-set role esede231_owner;
+set role esede241_owner;
 --set role  TEST_owner;
 --set role CAPA_owner;
 
 --sql2tabla_datos($esquema,$tabla,$operativo)
 --   para cargar tabla_datos y variables
-select sql2tabla_datos('base', 'tem', 'esede231');
+select sql2tabla_datos('base', 'tem', 'esede241');
 
 select sql2tabla_datos('base', unidad_analisis, operativo)
 from unidad_analisis u join parametros p using (operativo)

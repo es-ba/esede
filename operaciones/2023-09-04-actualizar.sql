@@ -1,5 +1,5 @@
 --ajustar el usuario que corresponda al entorno
-set role esede231_owner;
+set role esede241_owner;
 set search_path=base;
 
 -- FUNCTION: base.xcalcular_resultado_trg()
@@ -16,7 +16,7 @@ declare
 begin
     select  case when new.rea=1 then 'efectiva'  when new.rea=3 then 'pendiente' when new.rea=4 then 'mixta' when (new.rea=2 and new.norea is not null) then (select grupo from no_rea where new.norea=no_rea::integer )  else null end  into vresultado
       from tem
-      where operativo='esede231' and enc=new.enc;
+      where operativo='esede241' and enc=new.enc;
     
     new.resultado= vresultado ;
     return new; 
@@ -24,7 +24,7 @@ end;
 $BODY$;
 
 ALTER FUNCTION base.xcalcular_resultado_trg()
-    OWNER TO esede231_owner;
+    OWNER TO esede241_owner;
 ----
 CREATE TRIGGER xcalcular_resultado_trg
     BEFORE INSERT OR UPDATE OF rea, norea

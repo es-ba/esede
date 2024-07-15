@@ -1,4 +1,4 @@
-set role esede231_admin;
+set role esede241_admin;
 -- FUNCTION: base.update_varcal_por_encuesta(text, text)
 
 -- DROP FUNCTION IF EXISTS base.update_varcal_por_encuesta(text, text);
@@ -16,7 +16,7 @@ END;
 $BODY$;
 
 ALTER FUNCTION base.update_varcal_por_encuesta(text, text)
-    OWNER TO esede231_admin;
+    OWNER TO esede241_admin;
 
 CREATE OR REPLACE FUNCTION base.update_varcal(
 	p_operativo text)
@@ -30,4 +30,4 @@ END;
 $BODY$;
 
 ALTER FUNCTION base.update_varcal(text)
-    OWNER TO esede231_admin;
+    OWNER TO esede241_admin;

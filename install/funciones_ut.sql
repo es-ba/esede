@@ -1,4 +1,4 @@
---set role esede231owner;
+--set role esede241owner;
 --set search_path=base;
 
 -- DROP FUNCTION IF EXISTS existe_codigo_pegado_diario(text, text, integer, integer, integer, text);

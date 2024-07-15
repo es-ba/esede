@@ -1,4 +1,4 @@
-set role esede231_owner; --agregar el rol que corresponda al entorno
+set role esede241_owner; --agregar el rol que corresponda al entorno
 set search_path=base;
 
 alter table personas alter column sd12 type decimal;

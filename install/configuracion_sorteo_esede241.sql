@@ -96,4 +96,4 @@ UPDATE operativos
             "sorteado_mostrar": [{"source":"nombre_sup", "target":"msnombre_sup"}]
         }
     }'
-where operativo = 'esede231';
+where operativo = 'esede241';
