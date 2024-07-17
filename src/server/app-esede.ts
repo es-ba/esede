@@ -99,7 +99,9 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
             rea_anticuerpos,
         }
         be.appendToTableDefinition('tem',function(tableDef:TableDefinition, _context?:TableContext){
-            tableDef.hiddenColumns=tableDef.hiddenColumns?.filter(element => element !='semana');
+            tableDef.hiddenColumns=tableDef.hiddenColumns?.filter(element => 
+                !['seleccionado_ant','enc_ant','area_ant','cita','cluster','semana'].includes(element)
+            );
            // console.log('camposhidden', tableDef.hiddenColumns )
             tableDef.fields.find((field)=>field.name=='semana')!.visible=true;
         });
