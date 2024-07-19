@@ -23,7 +23,7 @@ setHdrQuery((quotedCondViv:string)=>{
                 'casa'          , casa          ,
                 'prioridad'     , reserva+1     ,
                 'observaciones' , tt.carga_observaciones ,
-                'cita'          , seleccionado_ant || ' ' || cita,
+                'cita'          , cita || ' // ' ||  seleccionado_ant,
                 'carga'         , t.area
             ) as tem, t.area,
             jsonb_build_object(
