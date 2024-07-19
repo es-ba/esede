@@ -98,6 +98,14 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
             datos_control,
             rea_anticuerpos,
         }
+
+        be.appendToTableDefinition('grilla_hoja_ruta',function(tableDef:TableDefinition, _context?:TableContext){
+            tableDef.hiddenColumns=tableDef.hiddenColumns?.filter(element => 
+                !['cluster','seleccionado_ant','cita'].includes(element)
+            );
+           // console.log('camposhidden', tableDef.hiddenColumns )
+            tableDef.fields.find((field)=>field.name=='semana')!.visible=true;
+        });
         be.appendToTableDefinition('tem',function(tableDef:TableDefinition, _context?:TableContext){
             tableDef.hiddenColumns=tableDef.hiddenColumns?.filter(element => 
                 !['seleccionado_ant','enc_ant','area_ant','cita','cluster','semana'].includes(element)
