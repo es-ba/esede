@@ -88,6 +88,11 @@ export function personas(context:TableContext):TableDefinition {
             "nullable": true
         },
         {
+            "name": "sd2a",
+            "typeName": "bigint",
+            "nullable": true
+        },
+        {
             "name": "sd3",
             "typeName": "bigint",
             "nullable": true
