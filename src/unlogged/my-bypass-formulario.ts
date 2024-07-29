@@ -110,6 +110,7 @@ var esRealizada = (respuestas:Respuestas)=>{
                 var resp_entrea_ind = respuestasP['entreaind' as IdVariable ];
                 var resp_sd1  = respuestasP['sd1' as IdVariable ];
                 var resp_sd2  = respuestasP['sd2' as IdVariable ];
+                var resp_sd2a = respuestasP['sd2a' as IdVariable ];
                 var resp_sd3  = respuestasP['sd3' as IdVariable ];
                 var resp_sd4  = respuestasP['sd4' as IdVariable ];
                 var resp_ac1  = respuestasP['ac1' as IdVariable ];
@@ -119,19 +120,21 @@ var esRealizada = (respuestas:Respuestas)=>{
                 var resp_dominio=respuestas['vdominio' as IdVariable];
                  // console.log('resp_entrea_ind ', resp_entrea_ind);  
                 if( resp_entrea_ind==1 ){ 
-                    if(resp_sd1==1 && resp_sd2==2 && resp_sd3==1 && resp_sd4==1 ){
+                    if(resp_sd1==1 && resp_sd2==2 && resp_sd2a==2 && resp_sd3==1 && resp_sd4==1 ){
                       if (resp_ac1!=null && resp_ac1a!=null && resp_ac2!=null && resp_ac2a!=null && resp_ac1==resp_ac1a && resp_ac2==resp_ac2a){ 
                             reah=1 
                           }else {
                             reah=3
                           }                            
-                    }else if (resp_sd1==2 || resp_sd2==1 || resp_sd3==2 || resp_sd4==2){
+                    }else if (resp_sd1==2 || resp_sd2==1 || resp_sd2a==1|| resp_sd3==2 || resp_sd4==2){
                             reah=2;
                     }else {
                             reah=3 
                     }        
                 }else if (resp_entrea_ind==2){
                             reah=2;
+                }else if (resp_entrea_ind==3){
+                            reah=3;            
                 }else{ // ver este caso 
                            reah=3;
                 }
