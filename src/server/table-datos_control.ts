@@ -639,7 +639,7 @@ export function datos_control(context:TableContext):TableDefinition {
                 inner join tareas_tem tt on t.operativo=tt.operativo and t.enc=tt.enc and tt.tarea=t.tarea_actual 
                 and ( tt.tarea='proc' or (tt.tarea is distinct from 'proc' and tt.estado in ('D','P','V') ) )
                 where t.rea in (1,2)
-                order by v.vdominio, v.vivienda, p.persona
+                order by t.cluster, v.vdominio, v.vivienda, p.persona
             )`,
         isTable: false
     },
