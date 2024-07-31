@@ -12,6 +12,7 @@ export function rea_anticuerpos(context:TableContext):TableDefinition {
             "visible": false,
             "nullable": false
         },
+        {name: "cluster"            , typeName:'integer' , editable: false},
         {
             "name": "vivienda",
             "typeName": "text",
@@ -79,7 +80,7 @@ export function rea_anticuerpos(context:TableContext):TableDefinition {
     ],
     sql: {
         from: `(
-            select v.operativo, v.vivienda,v.vdominio,
+            select t.cluster,v.operativo, v.vivienda,v.vdominio,
             persona, nombre, sexo, edad, entreaind,ac1, ac1a, ac2, ac2a,
             t.rea,t.resumen_estado,t.resultado,t.nrocomuna,tt.verificado, tt.estado
                 from viviendas v
@@ -87,7 +88,7 @@ export function rea_anticuerpos(context:TableContext):TableDefinition {
                 inner join tem t on t.operativo=v.operativo and t.enc=v.vivienda
                 inner join tareas_tem tt on t.operativo=tt.operativo and t.enc=tt.enc and tt.tarea=t.tarea_actual and tt.estado in ('D','P','V')
                 where t.rea=1 and v.cr_num_miembro=p.persona
-                order by v.vdominio,v.vivienda, p.persona
+                order by t.cluster,v.vdominio,v.vivienda,p.persona
             )`,
         isTable: false
     },

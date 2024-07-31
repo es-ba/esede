@@ -11,6 +11,7 @@ export function datos_control(context:TableContext):TableDefinition {
             "visible": false,
             "nullable": false
         },
+        {name: "cluster"            , typeName:'integer' , editable: false},
         {
             "name": "vivienda",
             "typeName": "text",
@@ -623,7 +624,7 @@ export function datos_control(context:TableContext):TableDefinition {
     ],
     sql: {
         from: `(
-            select v.*,
+            select t.cluster,v.*,
             persona, nombre, sexo, edad, lp, l0, msi, msnombrei, msedadi, entreaind, noreaind, esede9_esp, sd1, sd2, sd3, sd4, sd5, sd6, sd7, sd8, sd9, sd10_1, sd10_2, sd10_3, sd10_4, sd10_5, sd10_6, sd10_7, sd10_8, sd11_1, sd11_2, sd11_3, sd11_4, sd11_5, sd12, sd13, sd14, sd15, e1, e2, e3, esede4_esp, e4, esede8_esp, e5, c1::text, c2::text, c3::text, c4, ac1, ac1a, ac2, ac2a, ac3
             ,t.rea,t.norea,t.resumen_estado,t.resultado,t.nrocomuna,tt.verificado, tt.estado
             ,t.nomcalle, t.nrocatastral,t.piso,t.departamento,t.habitacion,t.sector,t.edificio,t.entrada,t.barrio
@@ -638,7 +639,7 @@ export function datos_control(context:TableContext):TableDefinition {
                 inner join tareas_tem tt on t.operativo=tt.operativo and t.enc=tt.enc and tt.tarea=t.tarea_actual 
                 and ( tt.tarea='proc' or (tt.tarea is distinct from 'proc' and tt.estado in ('D','P','V') ) )
                 where t.rea in (1,2)
-                order by v.vdominio, v.vivienda, p.persona
+                order by t.cluster, v.vdominio, v.vivienda, p.persona
             )`,
         isTable: false
     },
