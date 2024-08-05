@@ -48,6 +48,7 @@ install:
       - ../node_modules/dmencu/install/determinar_tarea_proxima_trg.sql
       - ../node_modules/dmencu/install/desverificar_tarea_trg.sql
       - ../node_modules/dmencu/install/inicial_update_varcal_por_encuesta.sql
+      - ../node_modules/dmencu/install/diccionario_func.sql
       - desintegrarpk.sql
       - comun_otras_fun.sql
       - ../node_modules/dmencu/install/actualizar_inconvar.sql
