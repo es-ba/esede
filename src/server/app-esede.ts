@@ -16,7 +16,7 @@ import { personas_sup        } from './table-personas_sup';
 import { datos_control       } from './table-datos_control';
 import { rea_anticuerpos     } from './table-rea_anticuerpos';
 
-const APP_DM_VERSION="#24-07-15";
+const APP_DM_VERSION="#24-08-05";
 
 export type Constructor<T> = new(...args: any[]) => T;
 export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(Base:T){
