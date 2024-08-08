@@ -137,6 +137,18 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
             })
             tableDef.fields=tableDef.fields.filter(f=>f.name !='hogar');
         })
+
+        be.appendToTableDefinition('tareas_tem_ingreso',function(tableDef:TableDefinition, _context?:TableContext){
+            tableDef.sql!.from = tableDef.sql!.from!.replace(
+                "'__implementar_en_operativo_final'",
+                `(select string_agg(case when concat_ws(';',c1, c2, c3) = '' then null else concat_ws(';',c1, c2, c3) end,';')  
+                    from viviendas v
+                    left join personas p on v.operativo=p.operativo and v.vivienda=p.vivienda and v.cr_num_miembro=p.persona
+                    where t.operativo = v.operativo and t.enc=v.vivienda --and tt.tarea=t.tarea_actual
+                    group by t.enc	
+	                )`
+            );
+        })
         be.appendToTableDefinition('areas', function(tableDef){
             tableDef.selfRefresh = true;
             tableDef.refrescable = true;
