@@ -1,0 +1,216 @@
+set role esede241_admin;
+--CAMBIAR ROL de acuerdo al entorno
+-- REEMPLAZAR TAMBIENA EL OWNER
+
+do $SQL_DUMP$
+ begin
+----
+ set search_path = base, comun;
+----
+
+
+drop table if exists "esede241_personas_calculada";
+drop table if exists "esede241_personas_sup_calculada";
+drop table if exists "esede241_tem_calculada";
+drop table if exists "esede241_visitas_calculada";
+drop table if exists "esede241_visitas_sup_calculada";
+drop table if exists "esede241_viviendas_calculada";
+
+DROP FUNCTION if exists gen_fun_var_calc();
+--DROP FUNCTION if exists update_varcal(text);
+--DROP FUNCTION if exists update_varcal_por_encuesta(text,text);
+
+
+
+create table "esede241_personas_calculada" (
+  "operativo" text, 
+  "vivienda" text, 
+  "persona" bigint
+, primary key ("operativo", "vivienda", "persona")
+);
+grant select, insert, update, references on "esede241_personas_calculada" to esede241_admin;
+grant all on "esede241_personas_calculada" to esede241_owner;
+
+
+
+create table "esede241_personas_sup_calculada" (
+  "operativo" text, 
+  "vivienda" text, 
+  "persona" bigint
+, primary key ("operativo", "vivienda", "persona")
+);
+grant select, insert, update, references on "esede241_personas_sup_calculada" to esede241_admin;
+grant all on "esede241_personas_sup_calculada" to esede241_owner;
+
+
+
+create table "esede241_tem_calculada" (
+  "operativo" text, 
+  "enc" text
+, primary key ("operativo", "enc")
+);
+grant select, insert, update, references on "esede241_tem_calculada" to esede241_admin;
+grant all on "esede241_tem_calculada" to esede241_owner;
+
+
+
+create table "esede241_visitas_calculada" (
+  "operativo" text, 
+  "vivienda" text, 
+  "visita" bigint
+, primary key ("operativo", "vivienda", "visita")
+);
+grant select, insert, update, references on "esede241_visitas_calculada" to esede241_admin;
+grant all on "esede241_visitas_calculada" to esede241_owner;
+
+
+
+create table "esede241_visitas_sup_calculada" (
+  "operativo" text, 
+  "vivienda" text, 
+  "visita" bigint
+, primary key ("operativo", "vivienda", "visita")
+);
+grant select, insert, update, references on "esede241_visitas_sup_calculada" to esede241_admin;
+grant all on "esede241_visitas_sup_calculada" to esede241_owner;
+
+
+
+create table "esede241_viviendas_calculada" (
+  "operativo" text, 
+  "vivienda" text, 
+  "cant_vis" bigint, 
+  "cant_per" bigint
+, primary key ("operativo", "vivienda")
+);
+grant select, insert, update, references on "esede241_viviendas_calculada" to esede241_admin;
+grant all on "esede241_viviendas_calculada" to esede241_owner;
+
+
+-- conss
+alter table "esede241_personas_calculada" add constraint "operativo<>''" check ("operativo"<>'');
+alter table "esede241_personas_calculada" add constraint "vivienda<>''" check ("vivienda"<>'');
+alter table "esede241_personas_sup_calculada" add constraint "operativo<>''" check ("operativo"<>'');
+alter table "esede241_personas_sup_calculada" add constraint "vivienda<>''" check ("vivienda"<>'');
+alter table "esede241_tem_calculada" add constraint "operativo<>''" check ("operativo"<>'');
+alter table "esede241_tem_calculada" add constraint "enc<>''" check ("enc"<>'');
+alter table "esede241_visitas_calculada" add constraint "operativo<>''" check ("operativo"<>'');
+alter table "esede241_visitas_calculada" add constraint "vivienda<>''" check ("vivienda"<>'');
+alter table "esede241_visitas_sup_calculada" add constraint "operativo<>''" check ("operativo"<>'');
+alter table "esede241_visitas_sup_calculada" add constraint "vivienda<>''" check ("vivienda"<>'');
+alter table "esede241_viviendas_calculada" add constraint "operativo<>''" check ("operativo"<>'');
+alter table "esede241_viviendas_calculada" add constraint "vivienda<>''" check ("vivienda"<>'');
+-- FKs
+alter table "esede241_personas_calculada" add constraint "esede241_personas_calculada personas REL" foreign key ("operativo", "vivienda", "persona") references "personas" ("operativo", "vivienda", "persona")  on delete cascade on update cascade;
+alter table "esede241_personas_sup_calculada" add constraint "esede241_personas_sup_calculada personas_sup REL" foreign key ("operativo", "vivienda", "persona") references "personas_sup" ("operativo", "vivienda", "persona")  on delete cascade on update cascade;
+alter table "esede241_tem_calculada" add constraint "esede241_tem_calculada tem REL" foreign key ("operativo", "enc") references "tem" ("operativo", "enc")  on delete cascade on update cascade;
+alter table "esede241_visitas_calculada" add constraint "esede241_visitas_calculada visitas REL" foreign key ("operativo", "vivienda", "visita") references "visitas" ("operativo", "vivienda", "visita")  on delete cascade on update cascade;
+alter table "esede241_visitas_sup_calculada" add constraint "esede241_visitas_sup_calculada visitas_sup REL" foreign key ("operativo", "vivienda", "visita") references "visitas_sup" ("operativo", "vivienda", "visita")  on delete cascade on update cascade;
+alter table "esede241_viviendas_calculada" add constraint "esede241_viviendas_calculada viviendas REL" foreign key ("operativo", "vivienda") references "viviendas" ("operativo", "vivienda")  on delete cascade on update cascade;
+-- index
+create index "operativo,vivienda,persona 4 esede241_personas_calculada IDX" ON "esede241_personas_calculada" ("operativo", "vivienda", "persona");
+create index "esede241_personas_sup_calculada personas_sup IDX" ON "esede241_personas_sup_calculada" ("operativo", "vivienda", "persona");
+create index "operativo,enc 4 esede241_tem_calculada IDX" ON "esede241_tem_calculada" ("operativo", "enc");
+create index "operativo,vivienda,visita 4 esede241_visitas_calculada IDX" ON "esede241_visitas_calculada" ("operativo", "vivienda", "visita");
+create index "esede241_visitas_sup_calculada visitas_sup IDX" ON "esede241_visitas_sup_calculada" ("operativo", "vivienda", "visita");
+create index "operativo,vivienda 4 esede241_viviendas_calculada IDX" ON "esede241_viviendas_calculada" ("operativo", "vivienda");
+-- policies
+
+----
+
+--Inserts de claves
+----
+            INSERT INTO "esede241_personas_calculada" ("operativo","vivienda","persona") 
+              SELECT "operativo","vivienda","persona" FROM "personas";
+
+            INSERT INTO "esede241_personas_sup_calculada" ("operativo","vivienda","persona") 
+              SELECT "operativo","vivienda","persona" FROM "personas_sup";
+
+            INSERT INTO "esede241_tem_calculada" ("operativo","enc") 
+              SELECT "operativo","enc" FROM "tem";
+
+            INSERT INTO "esede241_visitas_calculada" ("operativo","vivienda","visita") 
+              SELECT "operativo","vivienda","visita" FROM "visitas";
+
+            INSERT INTO "esede241_visitas_sup_calculada" ("operativo","vivienda","visita") 
+              SELECT "operativo","vivienda","visita" FROM "visitas_sup";
+
+            INSERT INTO "esede241_viviendas_calculada" ("operativo","vivienda") 
+              SELECT "operativo","vivienda" FROM "viviendas";
+----
+
+
+----- GENERADOR DE 2 FUNCIONES PARA CALCULO TOTAL Y PARA LLAMAR ANTES DE CADA CONSISTIR
+CREATE OR REPLACE FUNCTION base.gen_fun_var_calc() RETURNS TEXT
+  LANGUAGE PLPGSQL AS
+$GENERATOR$
+declare
+  v_sql text:=$THE_FUN$
+CREATE OR REPLACE FUNCTION update_varcal_por_encuesta("p_operativo" text, "p_id_caso" text) RETURNS TEXT
+  LANGUAGE PLPGSQL AS
+$BODY$
+BEGIN
+-- Cada vez que se actualizan las variables calculadas, previamente se deben insertar los registros que no existan (on conflict do nothing)
+-- de las tablas base (solo los campos pks), sin filtrar por p_id_caso para update_varcal o con dicho filtro para update_varcal_por_encuesta
+    INSERT INTO "esede241_personas_calculada" ("operativo","vivienda","persona") 
+      SELECT "operativo","vivienda","persona" FROM "personas" WHERE operativo=p_operativo AND "vivienda"=p_id_caso ON CONFLICT DO NOTHING;
+    INSERT INTO "esede241_personas_sup_calculada" ("operativo","vivienda","persona") 
+      SELECT "operativo","vivienda","persona" FROM "personas_sup" WHERE operativo=p_operativo AND "vivienda"=p_id_caso ON CONFLICT DO NOTHING;
+    INSERT INTO "esede241_tem_calculada" ("operativo","enc") 
+      SELECT "operativo","enc" FROM "tem" WHERE operativo=p_operativo AND "enc"=p_id_caso ON CONFLICT DO NOTHING;
+    INSERT INTO "esede241_visitas_calculada" ("operativo","vivienda","visita") 
+      SELECT "operativo","vivienda","visita" FROM "visitas" WHERE operativo=p_operativo AND "vivienda"=p_id_caso ON CONFLICT DO NOTHING;
+    INSERT INTO "esede241_visitas_sup_calculada" ("operativo","vivienda","visita") 
+      SELECT "operativo","vivienda","visita" FROM "visitas_sup" WHERE operativo=p_operativo AND "vivienda"=p_id_caso ON CONFLICT DO NOTHING;
+    INSERT INTO "esede241_viviendas_calculada" ("operativo","vivienda") 
+      SELECT "operativo","vivienda" FROM "viviendas" WHERE operativo=p_operativo AND "vivienda"=p_id_caso ON CONFLICT DO NOTHING;
+----
+  UPDATE esede241_viviendas_calculada
+    SET 
+        cant_vis = visitas_agg.cant_vis
+    FROM "viviendas"  
+      ,LATERAL (
+        SELECT
+        count(nullif(true,false)) as cant_vis
+    FROM "visitas" JOIN "esede241_visitas_calculada" using ("operativo","vivienda","visita")
+        WHERE "viviendas"."operativo"="visitas"."operativo" AND "viviendas"."vivienda"="visitas"."vivienda"
+      ) as visitas_agg
+    WHERE "viviendas"."operativo"="esede241_viviendas_calculada"."operativo" AND "viviendas"."vivienda"="esede241_viviendas_calculada"."vivienda" AND "viviendas"."operativo"=p_operativo AND "viviendas"."vivienda"=p_id_caso;
+  UPDATE esede241_viviendas_calculada
+    SET 
+        cant_per = personas_agg.cant_per
+    FROM "viviendas"  
+      ,LATERAL (
+        SELECT
+        count(nullif(true,false)) as cant_per
+    FROM "personas" JOIN "esede241_personas_calculada" using ("operativo","vivienda","persona")
+        WHERE "viviendas"."operativo"="personas"."operativo" AND "viviendas"."vivienda"="personas"."vivienda"
+      ) as personas_agg
+    WHERE "viviendas"."operativo"="esede241_viviendas_calculada"."operativo" AND "viviendas"."vivienda"="esede241_viviendas_calculada"."vivienda" AND "viviendas"."operativo"=p_operativo AND "viviendas"."vivienda"=p_id_caso;
+  RETURN 'OK';
+END;
+$BODY$;
+$THE_FUN$;
+begin 
+  -- TODO: hacer este reemplazo en JS
+  execute v_sql;
+  execute replace(replace(regexp_replace(replace(
+    v_sql,
+    $$update_varcal_por_encuesta("p_operativo" text, "p_id_caso" text) RETURNS TEXT$$, $$update_varcal("p_operativo" text) RETURNS TEXT$$),
+    $$(.* )".*"\."vivienda"=p_id_caso(.*)$$, $$\1TRUE\2$$,'gm'),
+    $$"enc"=p_id_caso$$, $$TRUE$$),
+    $$"vivienda"=p_id_caso$$, $$TRUE$$);
+  return '2GENERATED';
+end;
+$GENERATOR$;        
+----
+perform gen_fun_var_calc();
+----
+PERFORM update_varcal('esede241');
+----
+UPDATE operativos SET calculada=now()::timestamp(0) WHERE operativo='esede241';
+UPDATE tabla_datos SET generada=now()::timestamp(0) WHERE operativo='esede241' AND tipo='calculada';
+----
+end
+$SQL_DUMP$--- generado: Wed Aug 07 2024 17:10:32 GMT-0300 (hora estándar de Argentina)
+--corregi a mano condicion de insercion por encuesta en la tem enc por vivienda
