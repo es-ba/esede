@@ -244,7 +244,7 @@ export function personas(context:TableContext):TableDefinition {
         },
         {
             "name": "e5",
-            "typeName": "bigint",
+            "typeName": "text",
             "nullable": true
         },
         {
