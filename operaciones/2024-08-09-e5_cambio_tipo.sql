@@ -1,7 +1,7 @@
 set role esede241_owner; 
 set search_path=base;
 
-alter table personas alter column e5 text;
+alter table personas alter column e5 type text;
 update variables
   set tipovar='texto'
   where operativo= 'esede241'
