@@ -8,7 +8,7 @@ OperativoGenerator.mainTD = 'viviendas';
 OperativoGenerator.mainTDPK = 'vivienda'; // TODO: hacer esto dinámico en paquete consistencias
 //OperativoGenerator.orderedIngresoTDNames = [OperativoGenerator.mainTD, 'viviendas_calculada'];
 //OperativoGenerator.orderedReferencialesTDNames = ['lotes'];
-pgWhiteList.push('es_fecha','completar_fecha','valida_mesanio_edad','dic_parte','dic_tradu', 'to_date');
+pgWhiteList.push('es_fecha','completar_fecha','valida_mesanio_edad','dic_parte','dic_tradu', 'to_date','es_num_entero','a_entero');
 var AppEsede = emergeAppEsede(
     emergeAppDmEncu(
         emergeAppProcesamiento(
