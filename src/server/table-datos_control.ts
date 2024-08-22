@@ -642,7 +642,7 @@ export function datos_control(context:TableContext):TableDefinition {
                 left join personas p on v.operativo=p.operativo and v.vivienda=p.vivienda and v.cr_num_miembro=p.persona
                 inner join tem t on t.operativo=v.operativo and t.enc=v.vivienda
                 inner join tareas_tem tt on t.operativo=tt.operativo and t.enc=tt.enc and tt.tarea=t.tarea_actual 
-                and ( tt.tarea='proc' or (tt.tarea is distinct from 'proc' and tt.estado in ('D','P','V') ) )
+                and ( t.tarea_actual in ('proc' ,'finc', 'anac') or (t.tarea_actual in ('encu','recu', 'supe') and tt.estado in ('D','P','V') ) )
                 where t.rea in (1,2)
                 order by t.cluster, v.vdominio, v.vivienda, p.persona
             )`,
