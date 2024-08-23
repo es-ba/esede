@@ -8,13 +8,14 @@ import {defConfig} from "./def-config"
 import {procedures} from "./procedures-esede"
 
 /* tablas ua */
-import { viviendas           } from './table-viviendas';
-import { visitas             } from './table-visitas';
-import { personas            } from './table-personas';
-import { visitas_sup         } from './table-visitas_sup';
-import { personas_sup        } from './table-personas_sup';
-import { datos_control       } from './table-datos_control';
-import { rea_anticuerpos     } from './table-rea_anticuerpos';
+import { viviendas                   } from './table-viviendas';
+import { visitas                     } from './table-visitas';
+import { personas                    } from './table-personas';
+import { visitas_sup                 } from './table-visitas_sup';
+import { personas_sup                } from './table-personas_sup';
+import { datos_control               } from './table-datos_control';
+import { control_resumen_traspuesta  } from './table-control_resumen_traspuesta';
+import { rea_anticuerpos             } from './table-rea_anticuerpos';
 
 const APP_DM_VERSION="#24-08-12";
 
@@ -75,7 +76,9 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
     }
     override getMenuControles(context:Context){
         var menuControles =super.getMenuControles(context);
-        menuControles.push( {menuType:'table', name:'Datos', table: 'datos_control'});
+        menuControles.splice(2,0, {menuType:'table', name:'resumen (traspuesta)', table: 'control_resumen_traspuesta'})
+        menuControles.push( {menuType:'table', name:'datos', table: 'datos_control'});
+        
        // menuControles.push( {menuType:'table', name:'reas resultados anticuerpos', table: 'rea_anticuerpos'});
         //console.log('longitud ',menuControles.length)
         return menuControles
@@ -96,6 +99,7 @@ export function emergeAppEsede<T extends Constructor<dmencu.AppAppDmEncuType>>(B
             visitas_sup,
             personas_sup,
             datos_control,
+            control_resumen_traspuesta,
             rea_anticuerpos,
         }
 
