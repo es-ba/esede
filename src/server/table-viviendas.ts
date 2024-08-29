@@ -12,6 +12,13 @@ export function viviendas(context:TableContext):TableDefinition {
             "visible": false,
             "nullable": false
         },
+        {   
+            "name": "cluster",
+            "typeName": "integer",
+            "editable": false,
+            "inTable":  false,
+            "table":    "tem",
+        },
         {
             "name": "vivienda",
             "typeName": "text",
@@ -320,12 +327,22 @@ export function viviendas(context:TableContext):TableDefinition {
         }
     ],
     "sql": {
+        isTable: true,
+        from: `(
+            select  t.cluster, v.*
+                from viviendas v 
+                inner join tem t on t.operativo=v.operativo and t.enc=v.vivienda
+                order by t.cluster, v.vivienda
+            )`,
         "isReferable": true,
         skipEnance: true,
     },
     "primaryKey": [
         "operativo",
         "vivienda"
+    ],
+    "foreignKeys": [
+        {"references":"tem" , "fields":["operativo", {source:"vivienda", target:"enc"}], displayFields:[] },
     ],
     "detailTables": [
         {

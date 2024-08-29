@@ -12,6 +12,12 @@ export function personas(context:TableContext):TableDefinition {
             "typeName": "text",
             "nullable": false
         },
+        {   "name": "cluster", 
+            "typeName": "integer" , 
+            "editable": false, 
+            "inTable":  false,
+            "table":    "tem"
+        },
         {
             "name": "vivienda",
             "typeName": "text",
@@ -294,6 +300,14 @@ export function personas(context:TableContext):TableDefinition {
         }
     ],
     "sql": {
+        isTable: true,
+        from: `(
+            select  t.cluster, p.*
+                from personas p 
+                inner join viviendas v on v.operativo=p.operativo and v.vivienda=p.vivienda
+                inner join tem t on t.operativo=p.operativo and t.enc=v.vivienda
+                order by t.cluster, p.vivienda, p.persona
+            )`,
         "isReferable": true,
         skipEnance: true,
     },
@@ -311,7 +325,8 @@ export function personas(context:TableContext):TableDefinition {
                 "vivienda"
             ],
             "onDelete": 'cascade'
-        }
+        },
+        {"references":"tem" , "fields":["operativo", {source:"vivienda", target:"enc"}], displayFields:[] },
     ]
 };
 }
