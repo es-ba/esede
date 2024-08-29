@@ -80,7 +80,9 @@ create table "esede241_viviendas_calculada" (
   "operativo" text, 
   "vivienda" text, 
   "cant_vis" bigint, 
-  "cant_per" bigint
+  "cant_per" bigint, 
+  "tcluster" bigint,
+  "tpase_tabla" text
 , primary key ("operativo", "vivienda")
 );
 grant select, insert, update, references on "esede241_viviendas_calculada" to esede241_admin;
@@ -100,6 +102,7 @@ alter table "esede241_visitas_sup_calculada" add constraint "operativo<>''" chec
 alter table "esede241_visitas_sup_calculada" add constraint "vivienda<>''" check ("vivienda"<>'');
 alter table "esede241_viviendas_calculada" add constraint "operativo<>''" check ("operativo"<>'');
 alter table "esede241_viviendas_calculada" add constraint "vivienda<>''" check ("vivienda"<>'');
+alter table "esede241_viviendas_calculada" add constraint "tpase_tabla<>''" check ("tpase_tabla"<>'');
 -- FKs
 alter table "esede241_personas_calculada" add constraint "esede241_personas_calculada personas REL" foreign key ("operativo", "vivienda", "persona") references "personas" ("operativo", "vivienda", "persona")  on delete cascade on update cascade;
 alter table "esede241_personas_sup_calculada" add constraint "esede241_personas_sup_calculada personas_sup REL" foreign key ("operativo", "vivienda", "persona") references "personas_sup" ("operativo", "vivienda", "persona")  on delete cascade on update cascade;
@@ -167,8 +170,10 @@ BEGIN
 ----
   UPDATE esede241_viviendas_calculada
     SET 
-        cant_vis = visitas_agg.cant_vis
-    FROM "viviendas"  
+        cant_vis = visitas_agg.cant_vis,
+        tcluster = null2zero(tem.cluster),
+        tpase_tabla = nullif(null2zero(tem.pase_tabla), '')
+    FROM "viviendas" JOIN "tem" ON "viviendas"."vivienda"="tem"."enc" AND "viviendas"."operativo"="tem"."operativo"   
       ,LATERAL (
         SELECT
         count(nullif(true,false)) as cant_vis
@@ -206,11 +211,11 @@ $GENERATOR$;
 ----
 perform gen_fun_var_calc();
 ----
-PERFORM update_varcal('esede241');
+end;
+$SQL_DUMP$;--- generado: Wed Aug 07 2024 17:10:32 GMT-0300 (hora estándar de Argentina)
+--corregi a mano condicion de insercion por encuesta en la tem enc por vivienda
+
+select update_varcal('esede241');
 ----
 UPDATE operativos SET calculada=now()::timestamp(0) WHERE operativo='esede241';
 UPDATE tabla_datos SET generada=now()::timestamp(0) WHERE operativo='esede241' AND tipo='calculada';
-----
-end
-$SQL_DUMP$--- generado: Wed Aug 07 2024 17:10:32 GMT-0300 (hora estándar de Argentina)
---corregi a mano condicion de insercion por encuesta en la tem enc por vivienda
