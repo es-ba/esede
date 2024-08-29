@@ -16,8 +16,7 @@ export function viviendas(context:TableContext):TableDefinition {
             "name": "cluster",
             "typeName": "integer",
             "editable": false,
-            "inTable":  false,
-            "table":    "tem",
+            "inTable":  false
         },
         {
             "name": "vivienda",
@@ -341,9 +340,11 @@ export function viviendas(context:TableContext):TableDefinition {
         "operativo",
         "vivienda"
     ],
-    "foreignKeys": [
+    /*
+    "softForeignKeys": [
         {"references":"tem" , "fields":["operativo", {source:"vivienda", target:"enc"}], displayFields:[] },
     ],
+    */
     "detailTables": [
         {
             "table": "visitas",

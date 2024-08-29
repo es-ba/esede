@@ -15,8 +15,7 @@ export function personas(context:TableContext):TableDefinition {
         {   "name": "cluster", 
             "typeName": "integer" , 
             "editable": false, 
-            "inTable":  false,
-            "table":    "tem"
+            "inTable":  false
         },
         {
             "name": "vivienda",
@@ -325,8 +324,7 @@ export function personas(context:TableContext):TableDefinition {
                 "vivienda"
             ],
             "onDelete": 'cascade'
-        },
-        {"references":"tem" , "fields":["operativo", {source:"vivienda", target:"enc"}], displayFields:[] },
+        }
     ]
 };
 }
