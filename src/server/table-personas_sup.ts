@@ -21,7 +21,12 @@ export function personas_sup(context:TableContext):TableDefinition {
             "name": "persona",
             "typeName": "bigint",
             "nullable": false
-        },        
+        },
+        {   "name": "cluster", 
+            "typeName": "integer" , 
+            "editable": false, 
+            "inTable":  false
+        }, 
         {
             "name": "nombre_sup",
             "typeName": "text",
@@ -44,6 +49,14 @@ export function personas_sup(context:TableContext):TableDefinition {
         }
     ],
     "sql": {
+        isTable: true,
+        from: `(
+            select  p.*,t.cluster
+                from personas_sup p 
+                inner join viviendas v on v.operativo=p.operativo and v.vivienda=p.vivienda
+                inner join tem t on t.operativo=p.operativo and t.enc=v.vivienda
+                order by t.cluster, p.vivienda, p.persona
+            )`,
         "isReferable": true,
         skipEnance: true,
     },

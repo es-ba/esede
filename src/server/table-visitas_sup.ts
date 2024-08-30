@@ -21,7 +21,13 @@ export function visitas_sup(context:TableContext):TableDefinition {
             "name": "visita",
             "typeName": "bigint",
             "nullable": false
-        },         
+        },
+        {
+            "name": "cluster",
+            "typeName": "integer",
+            "editable": false,
+            "inTable":  false
+        }, 
         {
             "name": "rol_sup",
             "typeName": "text",
@@ -54,6 +60,14 @@ export function visitas_sup(context:TableContext):TableDefinition {
         }
     ],
     "sql": {
+        isTable: true,
+        from: `(
+            select  t.cluster, vis.*
+                from visitas_sup vis
+                inner join viviendas v on vis.operativo=v.operativo and vis.vivienda=v.vivienda
+                inner join tem t on t.operativo=v.operativo and t.enc=v.vivienda
+                order by t.cluster, v.vivienda
+            )`,
         "isReferable": true,
         skipEnance: true,
     },

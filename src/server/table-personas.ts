@@ -12,11 +12,6 @@ export function personas(context:TableContext):TableDefinition {
             "typeName": "text",
             "nullable": false
         },
-        {   "name": "cluster", 
-            "typeName": "integer" , 
-            "editable": false, 
-            "inTable":  false
-        },
         {
             "name": "vivienda",
             "typeName": "text",
@@ -26,7 +21,12 @@ export function personas(context:TableContext):TableDefinition {
             "name": "persona",
             "typeName": "bigint",
             "nullable": false
-        },        
+        }, 
+        {   "name": "cluster", 
+            "typeName": "integer" , 
+            "editable": false, 
+            "inTable":  false
+        }, 
         {
             "name": "nombre",
             "typeName": "text",
@@ -301,7 +301,7 @@ export function personas(context:TableContext):TableDefinition {
     "sql": {
         isTable: true,
         from: `(
-            select  t.cluster, p.*
+            select  p.*,t.cluster
                 from personas p 
                 inner join viviendas v on v.operativo=p.operativo and v.vivienda=p.vivienda
                 inner join tem t on t.operativo=p.operativo and t.enc=v.vivienda

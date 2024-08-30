@@ -12,17 +12,17 @@ export function viviendas(context:TableContext):TableDefinition {
             "visible": false,
             "nullable": false
         },
-        {   
-            "name": "cluster",
-            "typeName": "integer",
-            "editable": false,
-            "inTable":  false
-        },
         {
             "name": "vivienda",
             "typeName": "text",
             "nullable": false
         },
+        {
+            "name": "cluster",
+            "typeName": "integer",
+            "editable": false,
+            "inTable":  false
+        }, 
         {
             "name": "vdominio",
             "typeName": "bigint",
@@ -328,7 +328,7 @@ export function viviendas(context:TableContext):TableDefinition {
     "sql": {
         isTable: true,
         from: `(
-            select  t.cluster, v.*
+            select  v.*,t.cluster
                 from viviendas v 
                 inner join tem t on t.operativo=v.operativo and t.enc=v.vivienda
                 order by t.cluster, v.vivienda
